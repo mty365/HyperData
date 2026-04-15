@@ -2880,7 +2880,7 @@ def checkDatabase(device, code, android, version, rom_type, bigver, region,tag,z
 
 
 def add_rom_to_json(device, code, android, version, filetype, filename, devdata=None):
-	"""添加 ROM 到 JSON 文件，修复版"""
+	"""添加 ROM 到 JSON 文件,修复版 - 优化 Git diff"""
 	
 	if devdata is None:
 		device_file = get_platform_path(f"public/data/devices/{device}.json")
@@ -3018,21 +3018,29 @@ def add_rom_to_json(device, code, android, version, filetype, filename, devdata=
 			if field not in new_rom:
 				new_rom[field] = ""
 	
-	# 修复：使用列表插入确保顺序正确
-	roms_items = list(roms.items())
+	# 优化：直接操作字典，避免转换为列表再转回
+	# 使用 OrderedDict 风格的插入逻辑
+	from collections import OrderedDict
 	
-	insert_index = len(roms_items)
-	for i, (existing_ver, _) in enumerate(roms_items):
-		if compare(existing_ver, version):
-			continue
-		else:
-			insert_index = i
-			break
+	ordered_roms = OrderedDict()
+	inserted = False
 	
-	roms_items.insert(insert_index, (version, new_rom))
+	# 按版本号排序插入
+	sorted_versions = sorted(roms.keys(), key=lambda v: [int(x) for x in v.split('.')])
 	
-	# 直接使用 dict 确保顺序（Python 3.7+ 已保持插入顺序）
-	devdata["branches"][target_branch_idx]["roms"] = dict(roms_items)
+	for existing_ver in sorted_versions:
+		# 如果当前版本大于要插入的版本，且还未插入
+		if not inserted and compare(version, existing_ver):
+			ordered_roms[version] = new_rom
+			inserted = True
+		ordered_roms[existing_ver] = roms[existing_ver]
+	
+	# 如果还没插入（是最新版本），添加到末尾
+	if not inserted:
+		ordered_roms[version] = new_rom
+	
+	# 直接替换 roms，保持有序字典的特性
+	devdata["branches"][target_branch_idx]["roms"] = dict(ordered_roms)
 	return devdata
 def checkExist(filename):
 	newroms_file = get_platform_path("public/data/scripts/NewROMs.txt")
@@ -3071,7 +3079,6 @@ def checkExist(filename):
 					device, code, android, version, rom_type, bigver, region, tag, zone, branch, filetype = [item for item in rom_data]
 					checkDatabase(device, code, android, version, rom_type, bigver, region, tag, zone, branch, filetype, filename)
 				
-				# 修复：改进文件处理逻辑
 				device_file = get_platform_path(f"public/data/devices/{device}.json")
 				try:
 					with open(device_file, 'r', encoding='utf-8') as f:
@@ -3081,8 +3088,9 @@ def checkExist(filename):
 					if devdata is None:
 						print(f"错误: add_rom_to_json 返回 None")
 						return "Error"
-					with open(device_file, 'w', encoding='utf-8') as f:
-						json.dump(devdata, f, ensure_ascii=False, indent=2)
+					with open(device_file, 'w', encoding='utf-8', newline='\n') as f:
+						json.dump(devdata, f, ensure_ascii=False, indent='\t', sort_keys=False)
+					
 					# 验证保存结果
 					with open(device_file, 'r', encoding='utf-8') as f:
 						verify_data = json.load(f)
