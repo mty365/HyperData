@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-15 16:50:52",
+    "time": "2026-04-15 20:39:52",
     "developing": "no",
     "roms": [
       {
@@ -90,6 +90,14 @@
           "en": "Redmi Note 12 Pro Speed / POCO X5 Pro 5G"
         },
         "rom": "OS2.0.15.0.UMSIDXM"
+      },
+      {
+        "code": "pearl",
+        "name": {
+          "zh": "Redmi Note 12T Pro",
+          "en": "Redmi Note 12T Pro"
+        },
+        "rom": "OS3.0.3.0.VLHCNXM"
       },
       {
         "code": "sea",

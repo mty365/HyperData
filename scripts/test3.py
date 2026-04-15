@@ -18,4 +18,4 @@ for line in lines:
     if updated_devdata:
       device_file = OScommon.get_platform_path(f"public/data/devices/{device}.json")
       with open(device_file, 'w', encoding='utf-8') as f:
-        json.dump(updated_devdata, f, ensure_ascii=False, indent=2)
+        json.dump(updated_devdata, f, ensure_ascii=False, indent='\t', sort_keys=False)

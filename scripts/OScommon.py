@@ -26,6 +26,34 @@ def get_platform_path(relative_path):
 	else:
 		return os.path.join("/sdcard/Codes/HyperOS.fans", relative_path)
 
+def detect_json_indent(file_path):
+	"""检测JSON文件的缩进格式
+	
+	Args:
+		file_path: JSON文件路径
+	
+	Returns:
+		缩进字符串（'\t' 或 '  '）
+	"""
+	try:
+		with open(file_path, 'r', encoding='utf-8') as f:
+			# 读取第二行（第一行通常是 '{'）
+			lines = f.readlines()
+			if len(lines) > 1:
+				second_line = lines[1]
+				# 检查是否以Tab开头
+				if second_line.startswith('\t'):
+					return '\t'
+				# 检查空格数量
+				spaces = len(second_line) - len(second_line.lstrip(' '))
+				if spaces > 0:
+					return ' ' * spaces
+		# 默认使用2空格
+		return '\t'
+	except Exception:
+		return '\t'
+
+
 def extract_flag_from_filename(filename):
 	"""从文件名中提取flag"""
 	if ".zip" in filename:
@@ -2928,9 +2956,11 @@ def add_rom_to_json(device, code, android, version, filetype, filename, devdata=
 				match_method = f"code:{code}"
 				break
 	
-	# 如果仍未找到，创建新分支
+	# 如果仍未找到，返回错误
 	if target_branch is None:
-		print(f"未找到匹配分支，ROM : {filename}")
+		print(f"错误: 未找到匹配分支，ROM: {filename}")
+		return None
+	
 	# 处理 ROM 数据
 	if "roms" not in target_branch:
 		target_branch["roms"] = {}
@@ -2945,9 +2975,25 @@ def add_rom_to_json(device, code, android, version, filetype, filename, devdata=
 		if filetype == "recovery" and rom_data.get("recovery") != filename:
 			rom_data["recovery"] = filename
 			updated = True
-		elif filetype == "fastboot" and rom_data.get("fastboot") != filename:
-			rom_data["fastboot"] = filename
-			updated = True
+		elif filetype == "fastboot":
+			# 检查是否为运营商定制版
+			if "chinatelecom" in filename:
+				if rom_data.get("ctelecom") != filename:
+					rom_data["ctelecom"] = filename
+					updated = True
+			elif "chinamobile" in filename:
+				if rom_data.get("cmobile") != filename:
+					rom_data["cmobile"] = filename
+					updated = True
+			elif "chinaunicom" in filename:
+				if rom_data.get("cunicom") != filename:
+					rom_data["cunicom"] = filename
+					updated = True
+			else:
+				# 普通版 fastboot
+				if rom_data.get("fastboot") != filename:
+					rom_data["fastboot"] = filename
+					updated = True
 		
 		if not updated:
 			print(f"ROM 数据已完整: {version}")
@@ -2972,17 +3018,30 @@ def add_rom_to_json(device, code, android, version, filetype, filename, devdata=
 		new_rom["android"] = android
 		new_rom["release"] = get_time(form_url(filename, version))
 		
+		# 清除所有运营商字段和fastboot/recovery
+		for carrier_field in ["ctelecom", "cmobile", "cunicom"]:
+			if carrier_field in new_rom:
+				new_rom[carrier_field] = ""
+		
 		if filetype == "recovery":
 			new_rom["recovery"] = filename
 			new_rom["fastboot"] = ""
 		elif filetype == "fastboot":
-			new_rom["fastboot"] = filename
+			# 检查是否为运营商定制版
+			if "chinatelecom" in filename:
+				new_rom["ctelecom"] = filename
+				new_rom["fastboot"] = ""
+			elif "chinamobile" in filename:
+				new_rom["cmobile"] = filename
+				new_rom["fastboot"] = ""
+			elif "chinaunicom" in filename:
+				new_rom["cunicom"] = filename
+				new_rom["fastboot"] = ""
+			else:
+				# 普通版 fastboot
+				new_rom["fastboot"] = filename
+			
 			new_rom["recovery"] = ""
-		
-		# 清除所有运营商字段
-		for carrier_field in ["ctelecom", "cmobile", "cunicom"]:
-			if carrier_field in new_rom:
-				new_rom[carrier_field] = ""
 		
 		# 处理运营商字段
 		if "chinatelecom" in filename:
@@ -3012,21 +3071,27 @@ def add_rom_to_json(device, code, android, version, filetype, filename, devdata=
 			"android": android,
 			"release": get_time(form_url(filename, version)),
 			"recovery": filename if filetype == "recovery" else "",
-			"fastboot": filename if filetype == "fastboot" else ""
+			"fastboot": "" if filetype == "fastboot" and ("chinatelecom" in filename or "chinamobile" in filename or "chinaunicom" in filename) else (filename if filetype == "fastboot" else ""),
+			"ctelecom": filename if filetype == "fastboot" and "chinatelecom" in filename else "",
+			"cmobile": filename if filetype == "fastboot" and "chinamobile" in filename else "",
+			"cunicom": filename if filetype == "fastboot" and "chinaunicom" in filename else ""
 		}
 		for field in target_branch.get("table", []):
 			if field not in new_rom:
 				new_rom[field] = ""
 	
-	# 优化：直接操作字典，避免转换为列表再转回
-	# 使用 OrderedDict 风格的插入逻辑
-	from collections import OrderedDict
-	
 	ordered_roms = OrderedDict()
 	inserted = False
 	
-	# 按版本号排序插入
-	sorted_versions = sorted(roms.keys(), key=lambda v: [int(x) for x in v.split('.')])
+	# 按版本号排序插入 - 使用parse_version处理OS/A前缀
+	def version_sort_key(v):
+		parsed = parse_version(v)
+		if parsed is None:
+			# 如果解析失败，返回一个默认值让该版本排在最后
+			return (999, 999, 999, 999)
+		return parsed
+	
+	sorted_versions = sorted(roms.keys(), key=version_sort_key, reverse=True)
 	
 	for existing_ver in sorted_versions:
 		# 如果当前版本大于要插入的版本，且还未插入
@@ -3042,6 +3107,7 @@ def add_rom_to_json(device, code, android, version, filetype, filename, devdata=
 	# 直接替换 roms，保持有序字典的特性
 	devdata["branches"][target_branch_idx]["roms"] = dict(ordered_roms)
 	return devdata
+
 def checkExist(filename):
 	newroms_file = get_platform_path("public/data/scripts/NewROMs.txt")
 	newROM = open(newroms_file, 'r', encoding='utf-8').read()
@@ -3088,21 +3154,14 @@ def checkExist(filename):
 					if devdata is None:
 						print(f"错误: add_rom_to_json 返回 None")
 						return "Error"
+					
+					# 检测原始文件的缩进格式
+					indent = detect_json_indent(device_file)
+					
 					with open(device_file, 'w', encoding='utf-8', newline='\n') as f:
-						json.dump(devdata, f, ensure_ascii=False, indent='\t', sort_keys=False)
+						json.dump(devdata, f, ensure_ascii=False, indent=indent, sort_keys=False)
+						f.write('\n')
 					
-					# 验证保存结果
-					with open(device_file, 'r', encoding='utf-8') as f:
-						verify_data = json.load(f)
-					
-					# 检查新版本是否存在
-					found = False
-					for branch in verify_data.get('branches', []):
-						if version in branch.get('roms', {}):
-							found = True
-							break
-					if not found:
-						print(f"✗ 验证失败: 版本 {version} 未找到")
 				except Exception as e:
 					print(f"✗ 处理 JSON 文件时出错: {e}")
 					import traceback
