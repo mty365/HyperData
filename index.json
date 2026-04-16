@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-16 20:08:53",
+    "time": "2026-04-16 22:32:01",
     "developing": "no",
     "roms": [
       {
@@ -26,6 +26,14 @@
           "en": "Xiaomi 13 Pro"
         },
         "rom": "OS3.0.3.0.WMBEUXM"
+      },
+      {
+        "code": "ishtar",
+        "name": {
+          "zh": "小米 13 Ultra",
+          "en": "Xiaomi 13 Ultra"
+        },
+        "rom": "OS3.0.303.0.WMACNXM"
       },
       {
         "code": "pudding",
