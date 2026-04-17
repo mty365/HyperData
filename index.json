@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-17 10:21:56",
+    "time": "2026-04-17 11:32:40",
     "developing": "no",
     "roms": [
       {
@@ -177,7 +177,7 @@
           "zh": "Redmi Note 14 Pro / POCO X7",
           "en": "Redmi Note 14 Pro / POCO X7"
         },
-        "rom": "OS3.0.4.0.WOOMIDC"
+        "rom": "OS3.0.11.0.WOOMIXM; OS3.0.4.0.WOOMIDC; OS3.0.5.0.WOOEUXM; OS3.0.5.0.WOORUXM; OS3.0.6.0.WOOINXM"
       },
       {
         "code": "amethyst",
@@ -258,6 +258,14 @@
           "en": "REDMI Turbo 5 MAX / POCO X8 Pro MAX"
         },
         "rom": "OS3.0.2.0.WPLTWXM"
+      },
+      {
+        "code": "diting",
+        "name": {
+          "zh": "Redmi K50 至尊版 / 小米 12T Pro",
+          "en": "Redmi K50 Ultra / Xiaomi 12T Pro"
+        },
+        "rom": "OS3.0.2.0.VLFTWXM; OS3.0.2.0.VLFRUXM; OS3.0.2.0.VLFTRXM"
       },
       {
         "code": "duchamp",
