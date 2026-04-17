@@ -408,6 +408,14 @@
 					"fastboot": "",
 					"ctelecom": ""
 				},
+				"OS3.0.302.0.WMACNXM": {
+					"os": "OS3.0.302.0.WMACNXM",
+					"android": "16.0",
+					"release": "2026-04-17",
+					"recovery": "ishtar-ota_full-OS3.0.302.0.WMACNXM-user-16.0-9d9004c9fa.zip",
+					"fastboot": "",
+					"ctelecom": ""
+				},
 				"OS3.0.4.0.WMACNXM": {
 					"os": "OS3.0.4.0.WMACNXM",
 					"android": "16.0",
