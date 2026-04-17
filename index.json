@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-17 11:32:40",
+    "time": "2026-04-17 11:59:12",
     "developing": "no",
     "roms": [
       {
@@ -106,6 +106,14 @@
           "en": "Redmi 14C"
         },
         "rom": "OS3.0.1.0.WGTMIDC"
+      },
+      {
+        "code": "spring",
+        "name": {
+          "zh": "REDMI 15 5G / REDMI Note 15R 5G",
+          "en": "REDMI 15 5G / REDMI Note 15R 5G"
+        },
+        "rom": "OS3.0.1.0.WOUTRXM"
       },
       {
         "code": "redwood",
@@ -322,6 +330,30 @@
           "en": "REDMI Pad 2 4G"
         },
         "rom": "OS3.0.2.0.WOWTWXM"
+      },
+      {
+        "code": "taiko",
+        "name": {
+          "zh": "REDMI 平板 2",
+          "en": "REDMI Pad 2"
+        },
+        "rom": "OS3.0.4.0.WOVMIXM; OS3.0.2.0.WOVINXM"
+      },
+      {
+        "code": "flute",
+        "name": {
+          "zh": "REDMI 平板 2 Pro",
+          "en": "REDMI Pad 2 Pro"
+        },
+        "rom": "OS3.0.3.0.WPWMIXM; OS3.0.4.0.WPWRUXM"
+      },
+      {
+        "code": "organ",
+        "name": {
+          "zh": "REDMI 平板 2 Pro 5G",
+          "en": "REDMI Pad 2 Pro 5G"
+        },
+        "rom": "OS3.0.5.0.WPXMIXM"
       },
       {
         "code": "turner",
