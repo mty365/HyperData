@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-20 15:29:23",
+    "time": "2026-04-20 18:47:34",
     "developing": "no",
     "roms": [
       {
@@ -18,6 +18,14 @@
           "en": "Redmi 13 / POCO M6 4G"
         },
         "rom": "OS3.0.4.0.WNTTWXM; OS3.0.3.0.WNTMIDC"
+      },
+      {
+        "code": "air",
+        "name": {
+          "zh": "Redmi 13C/R 5G / POCO M6 5G",
+          "en": "Redmi 13C/R 5G / POCO M6 5G"
+        },
+        "rom": "OS2.0.202.0.VGQLMCR"
       },
       {
         "code": "ruby",
