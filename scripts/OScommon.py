@@ -166,8 +166,8 @@ miui_iv = b"0102030405060708"
 check_url = "https://update.miui.com/updates/miotaV3.php"
 
 
-unreleased = ['zephyr', 'coral']
-currentStable = ['zephyr', 'coral', 'arctic', 'dew','somalia', 'klee', 'dash', 'piano', 'yupei', 'pudding', 'nezha', 'flute', 'organ', 'spinel','charoite','annibale', 'myron',
+unreleased = ['chagall','warhol', 'zephyr', 'coral']
+currentStable = ['yili', 'prague', 'somalia', 'zephyr', 'chagall','warhol', 'coral', 'arctic', 'dew', 'klee', 'dash', 'piano', 'yupei', 'pudding', 'nezha', 'flute', 'organ', 'spinel','charoite','annibale', 'myron',
 								 'pandora', 'popsicle', 'tornado','goya', 'klimt', 'konghou',  'spring', 'lapis', 'kunzite',
 								 'flourite', 'creek', 'taiko', 'bixi', 'dali', 'turner', 'violin', 'koto', 'dijun', 'jinghu', 'luming', 
 								 'onyx', 'serenity', 'emerald_r', 'miro', 'zorn', 'xuanyuan', 'tanzanite', 'obsidian', 'rodin', 'warm', 'dada', 'haotian', 'uke', 'muyu', 
@@ -204,8 +204,8 @@ order = ['umi', 'cmi', 'cas', 'thyme', 'venus', 'star', 'lisa', 'pissarro_in', '
 				 'sweet_k6a', 'sea', 'gold', 'breeze', 'garnet', 'emerald', 'zircon', 'tanzanite', 'obsidian', 'beryl', 'malachite', 'amethyst', 'sapphire', 'sapphiren', 'emerald_r', 'spinel',
 				 'kunzite', 'lapis', 'coral', 'flourite', 'peridot', 'rodin','onyx', 'klee', 'dash','alioth',
 				 'charoite', 'haydn', 'ares', 'munch', 'rubens', 'matisse', 'ingres', 'diting', 'rembrandt', 'mondrian', 'socrates', 'corot', 'duchamp',
-				 'vermeer', 'manet', 'rothko', 'zorn', 'miro', 'dali','annibale', 'myron', 
-				 'yunluo', 'xun', 'flare', 'spark', 'koto', 'taiko','flute', 'organ', 'dizi', 'ruan', 'turner', 'warm', 'serenity', 'somalia', 'evergreen', 'rock', 'moonstone']
+				 'vermeer', 'manet', 'rothko', 'zorn', 'miro', 'dali','annibale', 'prague', 'myron', 
+				 'yunluo', 'xun', 'flare', 'spark', 'koto', 'taiko','flute', 'organ', 'dizi', 'ruan', 'turner', 'yili', 'warm', 'serenity', 'somalia', 'evergreen', 'rock', 'moonstone']
 
 branches = [
 	{
@@ -749,6 +749,10 @@ flags = {
 	"dada_lm_cr_global":"dada",
 	"uke_tr_global":"uke",
 	"muyu_demo":"muyu",
+	"prague": "prague",
+	"prague_demo": "prague",
+	"yili": "yili",
+	"yili_demo":"yili",
 	"beryl_ep_stdee":"beryl",
 	"BERYLEPSTDEE":"beryl",
 	"dada":"dada",
