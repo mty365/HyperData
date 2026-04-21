@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-20 22:59:12",
+    "time": "2026-04-21 13:21:25",
     "developing": "no",
     "roms": [
       {
@@ -42,6 +42,22 @@
           "en": "Redmi Note 12 Pro / Pro+ / Discovery 5G"
         },
         "rom": "OS2.0.4.0.UMOLMCR"
+      },
+      {
+        "code": "beryl",
+        "name": {
+          "zh": "Redmi Note 14 5G / POCO M7 Pro 5G",
+          "en": "Redmi Note 14 5G / POCO M7 Pro 5G"
+        },
+        "rom": "OS2.0.202.0.VOQGTTG"
+      },
+      {
+        "code": "rothko",
+        "name": {
+          "zh": "Redmi K70 至尊版 / 小米 14T Pro",
+          "en": "Redmi K70 Ultra / Xiaomi 14T Pro"
+        },
+        "rom": "OS3.0.302.0.WNNCNXM"
       }
     ]
   }
