@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-22 21:01:04",
+    "time": "2026-04-22 21:46:40",
     "developing": "no",
     "roms": [
       {
@@ -265,7 +265,7 @@
           "zh": "REDMI A5 / POCO C71",
           "en": "REDMI A5 / POCO C71"
         },
-        "rom": "A15.0.13.0.VGWEUOR; A15.0.7.0.VGWCLEN"
+        "rom": "A15.0.12.0.VGWMIDC; A15.0.13.0.VGWEUOR; A15.0.7.0.VGWCLEN"
       }
     ]
   }

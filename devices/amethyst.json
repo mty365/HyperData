@@ -679,7 +679,7 @@
 					"android": "16.0",
 					"release": "2026-04-14",
 					"recovery": "amethyst_eea_global-ota_full-OS3.0.4.0.WOPEUXM-user-16.0-91b51c82e7.zip",
-					"fastboot": ""
+					"fastboot": "amethyst_eea_global_images_OS3.0.4.0.WOPEUXM_20260401.0000.00_16.0_eea_13245f489a.tgz"
 				},
 				"OS3.0.3.0.WOPEUXM": {
 					"os": "OS3.0.3.0.WOPEUXM",
