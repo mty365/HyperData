@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-21 21:23:39",
+    "time": "2026-04-22 11:08:53",
     "developing": "no",
     "roms": [
       {
@@ -76,12 +76,20 @@
         "rom": "OS3.0.304.0.WAACNXM"
       },
       {
+        "code": "guitar",
+        "name": {
+          "zh": "REDMI Pad 2 SE",
+          "en": "REDMI Pad 2 SE"
+        },
+        "rom": "OS3.0.301.0.WDNCNXM"
+      },
+      {
         "code": "yili",
         "name": {
           "zh": "REDMI K Pad 2",
           "en": "REDMI K Pad 2"
         },
-        "rom": "OS3.0.303.0.WAKCNXM"
+        "rom": "OS3.0.303.0.WAKCNXM; OS3.0.301.0.WAKCNXM"
       },
       {
         "code": "serenity",
