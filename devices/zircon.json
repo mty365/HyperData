@@ -52,6 +52,14 @@
 			"zone": "1",
 			"ep": "0",
 			"roms": {
+				"OS3.0.303.0.WNOCNXM": {
+					"os": "OS3.0.303.0.WNOCNXM",
+					"android": "16.0",
+					"release": "2026-04-22",
+					"recovery": "zircon-ota_full-OS3.0.303.0.WNOCNXM-user-16.0-09c35a83d6.zip",
+					"fastboot": "",
+					"ctelecom": ""
+				},
 				"OS3.0.6.0.WNOCNXM": {
 					"os": "OS3.0.6.0.WNOCNXM",
 					"android": "16.0",

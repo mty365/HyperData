@@ -52,6 +52,14 @@
 			"zone": "1",
 			"ep": "0",
 			"roms": {
+				"OS3.0.303.0.WOOCNXM": {
+					"os": "OS3.0.303.0.WOOCNXM",
+					"android": "16.0",
+					"release": "2026-04-22",
+					"recovery": "malachite-ota_full-OS3.0.303.0.WOOCNXM-user-16.0-8d79fd9dee.zip",
+					"fastboot": "",
+					"ctelecom": ""
+				},
 				"OS3.0.3.0.WOOCNXM": {
 					"os": "OS3.0.3.0.WOOCNXM",
 					"android": "16.0",
