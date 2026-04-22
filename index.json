@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-22 16:19:52",
+    "time": "2026-04-22 16:31:27",
     "developing": "no",
     "roms": [
       {
@@ -100,6 +100,14 @@
         "rom": "OS2.0.204.0.VHZLMCR"
       },
       {
+        "code": "garnet",
+        "name": {
+          "zh": "Redmi Note 13 Pro 5G / POCO X6 5G",
+          "en": "Redmi Note 13 Pro 5G / POCO X6 5G"
+        },
+        "rom": "OS3.0.304.0.WNRCNXM"
+      },
+      {
         "code": "tanzanite",
         "name": {
           "zh": "Redmi Note 14 4G",
@@ -172,12 +180,36 @@
         "rom": "OS3.0.304.0.WAACNXM"
       },
       {
+        "code": "myron",
+        "name": {
+          "zh": "REDMI K90 Pro Max / POCO F8 Ultra",
+          "en": "REDMI K90 Pro Max / POCO F8 Ultra"
+        },
+        "rom": "OS3.0.305.10.WPMCNXM"
+      },
+      {
         "code": "guitar",
         "name": {
           "zh": "REDMI Pad 2 SE",
           "en": "REDMI Pad 2 SE"
         },
         "rom": "OS3.0.301.0.WDNCNXM"
+      },
+      {
+        "code": "koto",
+        "name": {
+          "zh": "REDMI 平板 2 4G",
+          "en": "REDMI Pad 2 4G"
+        },
+        "rom": "OS3.0.2.0.WOWINXM"
+      },
+      {
+        "code": "taiko",
+        "name": {
+          "zh": "REDMI 平板 2",
+          "en": "REDMI Pad 2"
+        },
+        "rom": "OS3.0.5.0.WOVEUXM"
       },
       {
         "code": "yili",

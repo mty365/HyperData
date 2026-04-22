@@ -892,7 +892,7 @@
 					"android": "16.0",
 					"release": "2026-04-14",
 					"recovery": "uke_id_global-ota_full-OS3.0.3.0.WOZIDXM-user-16.0-f9fdca5ecc.zip",
-					"fastboot": ""
+					"fastboot": "uke_id_global_images_OS3.0.3.0.WOZIDXM_20260323.0000.00_16.0_id_6c4f730820.tgz"
 				},
 				"OS3.0.2.0.WOZIDXM": {
 					"os": "OS3.0.2.0.WOZIDXM",
