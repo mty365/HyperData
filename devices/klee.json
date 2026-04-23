@@ -352,6 +352,13 @@
       "zone": "2",
       "ep": "0",
       "roms": {
+        "OS3.0.5.0.WPJINXM": {
+          "os": "OS3.0.5.0.WPJINXM",
+          "android": "16.0",
+          "release": "2026-04-20",
+          "recovery": "klee_in_global-ota_full-OS3.0.5.0.WPJINXM-user-16.0-49d5905e17.zip",
+          "fastboot": ""
+        },
         "OS3.0.3.0.WPJINXM": {
           "os": "OS3.0.3.0.WPJINXM",
           "android": "16.0",
