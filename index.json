@@ -1,6 +1,6 @@
 {
   "recent": {
-    "time": "2026-04-23 15:38:21",
+    "time": "2026-04-23 16:18:53",
     "developing": "no",
     "roms": [
       {
@@ -10,6 +10,14 @@
           "en": "Xiaomi 13 Pro"
         },
         "rom": "OS3.0.305.0.WMBCNXM"
+      },
+      {
+        "code": "dada",
+        "name": {
+          "zh": "小米 15",
+          "en": "Xiaomi 15"
+        },
+        "rom": "OS3.0.301.0.WOCEUXM"
       },
       {
         "code": "klimt",
@@ -250,6 +258,14 @@
           "en": "REDMI Pad 2 SE"
         },
         "rom": "OS3.0.301.0.WDNCNXM"
+      },
+      {
+        "code": "flare",
+        "name": {
+          "zh": "Redmi Pad SE 8.7 Wi-Fi",
+          "en": "Redmi Pad SE 8.7 Wi-Fi"
+        },
+        "rom": "OS3.0.1.0.WHXIDXM"
       },
       {
         "code": "koto",
