@@ -2404,6 +2404,7 @@ flags = {
 	"ZEUS": "zeus",
 	"lisa":"lisa",
 	"LISA":"lisa",
+	"arctic_eea_global": "arctic",
 	"pissarro": "pissarro",
 	"PISSARRO": "PISSARRO",
 	"MAYFLY": "mayfly",
