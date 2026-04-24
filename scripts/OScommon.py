@@ -2668,11 +2668,24 @@ def getData(filename):
 		
 		def parse_fastboot(fname):
 				"""解析线刷包格式"""
-				# 格式1: CODE-images-VERSION-TYPE-ANDROID-DATE.tgz (HyperOS新格式)
-				# 例: dew_mx_at_global_images_OS2.0.207.0.VBNMXAT_202507e28a.tgz
+				# 格式1: CODE-images-VERSION-TYPE-ANDROID-DATE-HASH.tgz (HyperOS新格式，带区域标识)
+				# 例: arctic_eea_global-images-OS3.0.6.0.WBVEUXM-user-20260409.0000.00-16.0-eea-8581295ba6.tgz
+				# 例: somalia_in_global-images-OS3.0.4.0.WBWINXM-user-20260305.0000.00-16.0-in-89794acd34.tgz
 				if '-images' in fname:
-						pattern = r'^([a-z0-9_]+)-images-([A-Z0-9\.]+)-[^-]+-(\d+\.\d+)-.*\.tgz$'
-						match = re.match(pattern, fname)
+						# 先尝试匹配带区域标识的新格式: CODE-images-VERSION-TYPE-DATE-ANDROID-REGION-HASH.tgz
+						pattern_new = r'^([a-z0-9_]+)-images-([A-Z0-9\.]+)-[^-]+-[^-]+-(\d+\.\d+)-[a-z]+-[a-z0-9]+\.tgz$'
+						match = re.match(pattern_new, fname)
+						if match:
+								return {
+										'code': match.group(1),
+										'version': match.group(2),
+										'android': match.group(3),
+										'filetype': 'fastboot'
+								}
+						
+						# 再尝试匹配旧格式: CODE-images-VERSION-TYPE-ANDROID-...HASH.tgz
+						pattern_old = r'^([a-z0-9_]+)-images-([A-Z0-9\.]+)-[^-]+-(\d+\.\d+)-.*\.tgz$'
+						match = re.match(pattern_old, fname)
 						if match:
 								return {
 										'code': match.group(1),
